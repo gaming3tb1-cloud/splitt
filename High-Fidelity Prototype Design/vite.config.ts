@@ -58,9 +58,5 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000,
     strictPort: true,
-    allowedHosts: [
-      '8e2cc48c-ce8b-4065-96c9-0b390d870d14-00-qj0xbav7j0ik.sisko.replit.dev',
-      '.replit.dev'
-    ],
   },
 });

@@ -1,11 +1,49 @@
 
-  # Split Easy
+# Split Easy
 
-  This is Split Easy - an expense tracking and group splitting application. The original design is available at https://www.figma.com/design/uIdQTC40f0f5J8CJdW2NwK/High-Fidelity-Prototype-Design.
+A modern expense tracking and group splitting application built with React and TypeScript.
 
-  ## Running the code
+## Features
 
-  Run `npm i` to install the dependencies.
+- User authentication and profiles
+- Expense tracking and management
+- Group expense splitting
+- Dashboard with expense analytics
+- Responsive design
 
-  Run `npm run dev` to start the development server.
+## Tech Stack
+
+- React 18 with TypeScript
+- Vite for build tooling
+- TailwindCSS for styling
+- Radix UI components
+- Supabase for backend services
+
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+3. Open your browser and navigate to the local development URL.
+
+## Project Structure
+
+- `src/components/` - React components
+- `src/contexts/` - React contexts for state management
+- `src/utils/` - Utility functions and API clients
+- `src/styles/` - Global styles and CSS
+
+## Build
+
+To create a production build:
+```bash
+npm run build
+```
   
