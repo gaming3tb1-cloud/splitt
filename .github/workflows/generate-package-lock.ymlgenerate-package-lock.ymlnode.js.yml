@@ -1,6 +1,5 @@
 # Workflow to generate and commit package-lock.json in split-easy directory
 name: Generate package-lock.json
-
 on:
   workflow_dispatch:  # Allow manual triggering
 
@@ -29,7 +28,7 @@ jobs:
         
     - name: Commit and push package-lock.json
       run: |
-        git add split-easy/package-lock.json
+        git add -f split-easy/package-lock.json
         if git diff --staged --quiet; then
           echo "No changes to commit"
         else
