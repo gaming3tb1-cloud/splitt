@@ -41,6 +41,16 @@ export const api = {
     return { session, error };
   },
 
+  async signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}`,
+      }
+    });
+    return { data, error };
+  },
+
   // User Profile
   async getProfile(accessToken: string) {
     const response = await fetch(`${apiUrl}/user/profile`, {
