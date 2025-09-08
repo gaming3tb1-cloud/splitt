@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { api } from '../utils/supabase/client';
+import { api, supabase } from '../utils/supabase/client';
 
 interface User {
   id: string;
@@ -26,6 +26,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     checkSession();
+    
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('Auth state changed:', event, session);
+        if (session?.access_token) {
+          setAccessToken(session.access_token);
+          setUser({
+            id: session.user.id,
+            email: session.user.email!,
+            name: session.user.user_metadata?.name
+          });
+        } else {
+          setUser(null);
+          setAccessToken(null);
+        }
+        setLoading(false);
+      }
+    );
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const checkSession = async () => {
@@ -70,14 +91,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signUp = async (email: string, password: string, name: string) => {
     try {
-      const result = await api.signup(email, password, name);
-      if (result.error) {
-        return { error: result.error };
+      const { data, error } = await api.signup(email, password, name);
+      if (error) {
+        return { error };
       }
       
-      // After signup, automatically sign in
-      return await signIn(email, password);
+      // If user is confirmed immediately, set the session
+      if (data.session?.access_token) {
+        setAccessToken(data.session.access_token);
+        setUser({
+          id: data.user.id,
+          email: data.user.email!,
+          name: data.user.user_metadata?.name
+        });
+      }
+      
+      return { data };
     } catch (error) {
+      console.error('Signup error:', error);
       return { error };
     }
   };

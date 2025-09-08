@@ -12,15 +12,16 @@ export const apiUrl = `https://${projectId}.supabase.co/functions/v1/make-server
 export const api = {
   // Auth
   async signup(email: string, password: string, name: string) {
-    const response = await fetch(`${apiUrl}/auth/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${publicAnonKey}`
-      },
-      body: JSON.stringify({ email, password, name })
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          name: name
+        }
+      }
     });
-    return response.json();
+    return { data, error };
   },
 
   async signIn(email: string, password: string) {

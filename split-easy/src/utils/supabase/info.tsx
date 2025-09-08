@@ -1,3 +1,3 @@
 // Supabase configuration
-export const projectId = "oueaamkkjpwovzrfgstz"
-export const publicAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im91ZWFhbWtranB3b3Z6cmZnc3R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMjA3NjYsImV4cCI6MjA3Mjg5Njc2Nn0.0DuRU4SOhmpgHOCyzJcKoCUlTXmSxASU0sMfA-Q6kME"
+export const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID || "oueaamkkjpwovzrfgstz"
+export const publicAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im91ZWFhbWtranB3b3Z6cmZnc3R6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTczMjA3NjYsImV4cCI6MjA3Mjg5Njc2Nn0.0DuRU4SOhmpgHOCyzJcKoCUlTXmSxASU0sMfA-Q6kME"

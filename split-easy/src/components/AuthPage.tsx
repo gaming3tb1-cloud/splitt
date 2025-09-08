@@ -50,13 +50,19 @@ export default function AuthPage() {
     setLoading(true);
 
     try {
-      const { error } = await signUp(formData.email, formData.password, formData.name);
+      const { data, error } = await signUp(formData.email, formData.password, formData.name);
       if (error) {
+        console.error('Signup error:', error);
         toast.error(error.message || 'Failed to create account');
       } else {
-        toast.success('Account created successfully!');
+        if (data?.user && !data.user.email_confirmed_at) {
+          toast.success('Account created! Please check your email to confirm your account.');
+        } else {
+          toast.success('Account created successfully!');
+        }
       }
     } catch (error) {
+      console.error('Signup error:', error);
       toast.error('An unexpected error occurred');
     } finally {
       setLoading(false);
