@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { api } from '../utils/supabase/client';
 
 interface User {
@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkSession = async () => {
     try {
-      const { session, error } = await api.getSession();
+      const { session } = await api.getSession();
       if (session?.access_token) {
         setAccessToken(session.access_token);
         setUser({
@@ -84,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithGoogle = async () => {
     try {
-      const { data, error } = await api.signInWithGoogle();
+      const { error } = await api.signInWithGoogle();
       if (error) {
         return { error };
       }

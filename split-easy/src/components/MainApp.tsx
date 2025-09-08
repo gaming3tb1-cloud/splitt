@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import Dashboard from './Dashboard';
@@ -22,7 +22,7 @@ export default function MainApp({ onBackToLanding }: MainAppProps) {
     { id: 'profile', label: 'Profile', icon: User, component: Profile },
   ];
 
-  const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || Dashboard;
+  // const ActiveComponent = tabs.find(tab => tab.id === activeTab)?.component || Dashboard;
 
   return (
     <div className="min-h-screen bg-background">

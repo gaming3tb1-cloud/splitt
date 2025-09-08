@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Avatar, AvatarFallback } from './ui/avatar';
@@ -9,25 +9,23 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from './ui/tabs';
 import { 
   Plus, 
   Receipt, 
-  DollarSign, 
   Calendar,
   Users,
   Filter,
   Search,
   MoreVertical,
   Edit,
-  Trash2,
   CheckCircle,
   Clock,
   Loader2
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { api } from '../utils/supabase/client';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 export default function Expenses() {
   const { accessToken } = useAuth();
