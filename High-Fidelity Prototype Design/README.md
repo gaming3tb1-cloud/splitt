@@ -1,7 +1,7 @@
 
-  # High-Fidelity Prototype Design
+  # Split Easy
 
-  This is a code bundle for High-Fidelity Prototype Design. The original project is available at https://www.figma.com/design/uIdQTC40f0f5J8CJdW2NwK/High-Fidelity-Prototype-Design.
+  This is Split Easy - an expense tracking and group splitting application. The original design is available at https://www.figma.com/design/uIdQTC40f0f5J8CJdW2NwK/High-Fidelity-Prototype-Design.
 
   ## Running the code
 

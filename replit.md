@@ -1,4 +1,4 @@
-# High-Fidelity Prototype Design
+# Split Easy
 
 ## Overview
 A React + TypeScript expense tracking application with authentication and group expense management. Originally imported from a Figma design prototype. The app uses Supabase for backend services including authentication, database, and serverless functions.
