@@ -1,0 +1,38 @@
+# Workflow to generate and commit package-lock.json in split-easy directory
+name: Generate package-lock.json
+
+on:
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  generate-lock:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install dependencies in split-easy directory
+      run: |
+        cd split-easy
+        npm install
+        
+    - name: Configure git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: Commit and push package-lock.json
+      run: |
+        git add split-easy/package-lock.json
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Generate package-lock.json for split-easy directory"
+          git push
+        fi
